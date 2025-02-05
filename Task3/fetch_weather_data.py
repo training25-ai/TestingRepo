@@ -3,15 +3,13 @@ import psycopg2
 from datetime import datetime
 import time
 
-# PostgreSQL connection details
 DB_HOST = "ep-noisy-lake-a8k78ama-pooler.eastus2.azure.neon.tech"
 DB_NAME = "playground"
 DB_USER = "shashank"
 DB_PASSWORD = "C0nsult@nt"
 
-# OpenWeather API details
-API_KEY = "2a8e50ff40b7a51fd0fcd990420b686c"  # Replace with your API key
-CITY = "London"  # Change to your preferred city
+API_KEY = "2a8e50ff40b7a51fd0fcd990420b686c"
+CITY = "London"
 API_URL = f"http://api.openweathermap.org/data/2.5/weather?q={CITY}&appid={API_KEY}&units=metric"
 
 def fetch_weather():
@@ -62,4 +60,4 @@ if __name__ == "__main__":
         if weather:
             insert_into_db(weather)
         print("⏳ Waiting for 1 hour before the next update...\n")
-        time.sleep(3600)  # Wait for 1 hour (3600 seconds)
+        time.sleep(3600)

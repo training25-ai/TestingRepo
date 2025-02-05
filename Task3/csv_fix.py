@@ -3,7 +3,6 @@ import csv
 csv_path = "/Users/sunda/Downloads/Task3_dB_dataUpload/shashank_data.csv"
 fixed_csv_path = "/Users/sunda/Downloads/Task3_dB_dataUpload/shashank_data_fixed.csv"
 
-# Open and reformat the CSV properly
 with open(csv_path, "r", newline="", encoding="utf-8") as infile, \
      open(fixed_csv_path, "w", newline="", encoding="utf-8") as outfile:
     

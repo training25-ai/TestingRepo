@@ -9,20 +9,19 @@ def check_and_create_table():
     table_name = "shashank_table"
 
     try:
-        # Connect to PostgreSQL
+  
         conn = psycopg2.connect(
             host=host, database=database, user=user, password=password, port=5432
         )
         cur = conn.cursor()
 
-        # Check if table exists
+    
         cur.execute(f"SELECT * FROM {schema}.{table_name} LIMIT 5;")
         print(f"✅ Table '{table_name}' exists.")
     
     except psycopg2.errors.UndefinedTable:
         print(f"⚠️ Table '{table_name}' does not exist. Creating it now...")
 
-        # Create table if it does not exist
         create_table_query = f"""
         CREATE TABLE IF NOT EXISTS {schema}.{table_name} (
             id SERIAL PRIMARY KEY,
@@ -45,5 +44,4 @@ def check_and_create_table():
             conn.close()
             print("🔄 Connection closed.")
 
-# Run the function
 check_and_create_table()

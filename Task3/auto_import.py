@@ -5,7 +5,6 @@ import os
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 
-# Database connection details
 DB_CONFIG = {
     "host": "ep-noisy-lake-a8k78ama-pooler.eastus2.azure.neon.tech",
     "database": "playground",
@@ -15,7 +14,6 @@ DB_CONFIG = {
     "table": "shashank_table"
 }
 
-# CSV File Path
 CSV_FILE = "/Users/sunda/Downloads/Task3/TestingRepo/Task3/shashank_data.csv"
 
 def connect_db():
@@ -34,15 +32,12 @@ def import_csv_to_db():
         conn = connect_db()
         cur = conn.cursor()
 
-        # Read CSV file
         df = pd.read_csv(CSV_FILE)
 
-        # Ensure column names match database table
         if list(df.columns) != ["name", "age", "city"]:
             print("⚠️ CSV column mismatch! Ensure CSV has: name, age, city")
             return
         
-        # Insert new records
         for _, row in df.iterrows():
             cur.execute(
                 f"""
@@ -87,8 +82,6 @@ def start_monitoring():
     observer.join()
 
 if __name__ == "__main__":
-    # Initial import
     import_csv_to_db()
-    
-    # Start watching for updates
+
     start_monitoring()
