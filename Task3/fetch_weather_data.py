@@ -48,7 +48,7 @@ def insert_into_db(weather_data):
         conn.commit()
         cur.close()
         conn.close()
-        print(f"✅ Weather data for {city}, {country} inserted successfully at {timestamp}!")
+        print(f"Weather data for {city}, {country} inserted successfully at {timestamp}!")
 
     except Exception as e:
         print(f"❌ Database Error: {e}")
